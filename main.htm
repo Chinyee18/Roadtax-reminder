@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="webApplication">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="" />
+    <!-- sms picture -->
+    <meta property="og:image" content="dist/images/banner.jpg" />
+
+    <title>Web Application | Road Tax Reminder</title>
+
+    <!-- css -->
+    <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- The Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-mask/1.6.3/mask.js"></script>
+
+    <!-- APPLICATION SPECIFIC -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- mini-app components -->
+    <script src="dist/js/app/app_module.js"></script>
+    
+</head>
+
+<body ng-cloak ng-controller="Controller" class="mx-auto">
+    <div ng-init="initPage()" class="container c-container px-0"> 
+            <div class="position-relative header">
+                <img src="dist/images/banner.jpg"/>
+                <p class="position-absolute header-text">We will remind you when your
+                    Road Tax due for renewal</p>
+            </div>
+            <form name="customForm" ng-hide="submitted">
+                <div class="row mt-5 c-content">
+                    I would like to be notified on my 
+                    <div class="c-card mt-3">
+                        <div class="display mx-4">
+                            <p class="me-3 label my-auto">mobile phone </p>
+                            <input type="text" class="form-control short mt-md-auto mt-2" ng-model="data.mobilePhone" required>
+                        </div>
+                        <div class="display mt-3 mx-4">
+                            <p class="me-3 label my-auto">email </p>
+                            <input type="text" class="form-control short mt-md-auto mt-2" ng-model="data.email" required>
+                        </div>
+                    </div>
+                    <div class="c-card mt-4">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col" class="table-header">Road tax expiry date</th>
+                                <th scope="col" >
+                                    <span ng-if="data.enableCarRegNo" class="table-header">Car Registration Number</span>
+                                    <div ng-hide="data.enableCarRegNo" >
+                                        <input type="checkbox" ng-model="data.enableCarRegNo">
+                                        <span class="mx-2 small-text">Please tick to fill in car registration number</span>
+                                    </div>
+                                </th >
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr ng-repeat="roadTax in roadTaxList track by $index">
+                                <td class="p-0 t-cell">
+                                    <input type="text" class="short table-input" ng-model="data.roadTax[$index].expiryDate" placeholder="yymmdd" required>
+                                </td>
+                                <td class="p-0" >
+                                    <input ng-disabled="!data.enableCarRegNo" type="text" class="medium table-input" ng-model="data.roadTax[$index].carRegNo" >
+                                </td>
+                              </tr>
+                            </tbody>
+                        </table>
+                        <!-- <div ng-hide="data.enableCarRegNo" class="position-absolute checkbox-position"></div> -->
+                        
+                          <!-- {{data.roadTax}} -->
+                          <button class="btn btn-secondary mt-3" ng-click="addRoadTaxList()">+ Add more road tax</button>
+                    </div>
+                    <button class="btn btn-primary mt-4 mb-4 submit-btn" ng-click="submit(customForm)">Submit</button>
+                    <p class="tnc text-center mb-5">T&C Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions.</p>
+                </div>
+            </form>
+            <div ng-show="submitted">
+                <div class="row mt-5 c-content text-center">
+                    Thank you! You will receive a sms reminder 3 days before your road tax(es) expiration date.
+                </div>
+            </div>
+    </div>
+</body>
+
+</html>

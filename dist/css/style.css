@@ -1,0 +1,132 @@
+.c-container{
+    max-width: 800px !important;
+    background-color: #fff;
+    background-color: rgb(245, 245, 245);
+    font-family: 'Open Sans';
+    min-height: 100vh;
+}
+.header{
+    width: 100%;
+    aspect-ratio: 3 / 1;
+    overflow: hidden;
+}
+.header img{
+    width: 100%;
+}
+.header-text{
+    background-color: #000;
+    font-size: 30px;
+    color:  #fff;
+    font-weight: bold;
+    padding: 5px 10px;
+    width: 60%;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    text-align: center;
+}
+
+.checkbox-position{
+    top: 50%; 
+    left: 400px; 
+    transform: translate(-50%, -50%); 
+    text-align: center;
+}
+
+.c-content{
+    margin-left: 10% !important;  
+    margin-right: 10% !important;  
+    width: 80% !important;  
+    color: #1f4f53;
+}
+
+.c-card{
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.c-card .label{
+    font-size: 13px;
+    color: #3fc9c4;
+}
+
+.display{
+    display: flex !important;
+}
+.label{
+    width: 105px;
+}
+.short{
+    width: 250px !important;
+}
+.medium{
+    width: 370px !important;
+}
+
+.table-input{
+    padding: 8px;
+    text-indent: 5px;
+    border: 0; 
+    
+}
+::placeholder {
+    color: rgb(171, 171, 171);
+    font-size: 13px;
+  }
+.table-input:focus-visible{
+    outline: 0; 
+    /* outline-color:rgb(150, 201, 190); */
+}
+.small-text{
+    font-size: 13px;
+    color:rgb(92, 92, 92);
+}
+.submit-btn{
+    width: 120px !important;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #3fc9c4!important ;
+    border: 1px solid #3fc9c4!important ;
+}
+.tnc{
+    font-size: 9px;
+    line-height: 11px;
+}
+.btn-secondary{
+    font-size: 15px !important;
+    background-color: #a7a7a7!important ;
+    border: 1px solid #a7a7a7!important ;
+}
+.table-header{
+    color: #1f4f53 !important;
+}
+@media only screen and (max-width: 500px) {
+    .header{
+        aspect-ratio: 5 / 2;
+    }
+    .header-text{
+        font-size: 20px;
+    }
+    .short{
+        width: 100% !important;
+    }
+    .c-content{
+        margin-left: 5% !important;  
+        margin-right: 5% !important;  
+        width: 90% !important;  
+    }
+    .display{
+        display: block !important;
+    }
+    .t-cell, .short.table-input{
+        width: 120px !important;
+    }
+    .medium{
+        width: 100% !important;
+    }
+    .c-card{
+        padding: 20px 15px 30px !important;
+    }
+  }
